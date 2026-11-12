@@ -1,0 +1,258 @@
+URL https://docs.copilotkit.ai/vue/langgraph-typescript/webmcp
+FINAL https://docs.copilotkit.ai/vue/langgraph-typescript/webmcp
+STATUS 200
+TITLE WebMCP
+IFRAMES 
+LINKS
+https://docs.copilotkit.ai/
+https://docs.copilotkit.ai/reference
+https://docs.copilotkit.ai/cookbook
+https://copilotkit.ai/talk-to-an-engineer
+https://dashboard.operations.copilotkit.ai/sign-in?post_auth_redirect=ready&utm_source=docs&utm_medium=cta&utm_campaign=intelligence&utm_content=navbar
+https://docs.copilotkit.ai/vue/langgraph-typescript
+https://docs.copilotkit.ai/vue/langgraph-typescript/using-these-docs
+https://docs.copilotkit.ai/vue/langgraph-typescript/build-with-agents
+https://docs.copilotkit.ai/vue/langgraph-typescript/intelligence/overview
+https://docs.copilotkit.ai/vue/langgraph-typescript/frontend-tools
+https://docs.copilotkit.ai/vue/langgraph-typescript/webmcp
+https://docs.copilotkit.ai/vue/langgraph-typescript/multi-agent/subagents
+https://docs.copilotkit.ai/vue/langgraph-typescript/learning
+https://docs.copilotkit.ai/vue/langgraph-typescript/intelligence/memories
+https://docs.copilotkit.ai/vue/langgraph-typescript/intelligence/trajectories
+https://docs.copilotkit.ai/vue/langgraph-typescript/intelligence/standalone-collector
+https://docs.copilotkit.ai/vue/langgraph-typescript/intelligence/analytics
+https://docs.copilotkit.ai/vue/langgraph-typescript/intelligence/channels
+https://docs.copilotkit.ai/vue/langgraph-typescript/community-frameworks
+https://docs.copilotkit.ai/reference/vue
+https://github.com/copilotkit/copilotkit
+https://discord.gg/6dffbvGU3D
+https://docs.copilotkit.ai/vue/langgraph-typescript/webmcp#overview
+https://webmachinelearning.github.io/webmcp/
+https://developer.chrome.com/docs/ai/webmcp
+https://docs.copilotkit.ai/vue/langgraph-typescript/webmcp#start-with-your-coding-agent
+https://docs.copilotkit.ai/vue/langgraph-typescript/webmcp#do-i-need-an-agent
+https://docs.copilotkit.ai/vue/langgraph-typescript/webmcp#how-copilotkit-connects-webmcp
+https://docs.copilotkit.ai/vue/langgraph-typescript/webmcp#add-webmcp-manually
+https://docs.copilotkit.ai/vue/langgraph-typescript/webmcp#vue-frontend-tool
+https://docs.copilotkit.ai/reference/vue/hooks/useFrontendTool
+https://docs.copilotkit.ai/vue/langgraph-typescript/webmcp#webmcp-only-with-no-agent
+https://docs.copilotkit.ai/vue/langgraph-typescript/webmcp#design-tools-agents-can-use-reliably
+https://developer.chrome.com/docs/ai/webmcp/secure-tools
+https://docs.copilotkit.ai/vue/langgraph-typescript/webmcp#test-the-complete-path
+https://developer.chrome.com/docs/ai/webmcp#origin-isolation
+https://developer.chrome.com/docs/ai/webmcp#imitate-agent-chat-with-the-inspector-extension
+https://docs.copilotkit.ai/vue/langgraph-typescript/webmcp#related
+https://developer.chrome.com/docs/ai/webmcp/best-practices
+---
+Frontend
+Vue
+Agent backend
+LangGraph (TypeScript)
+Quickstart
+Using these docs
+Build with agents
+Intelligence
+
+Basics
+
+Chat
+Threads
+Frontend-tools
+
+Generative UI
+
+Controlled
+Open-ended
+
+Interactivity
+
+Shared state
+Human-in-the-loop
+WebMCP
+
+Agent capabilities
+
+Sub-agents
+
+Intelligence
+
+Overview
+Get started
+Features
+AG-UI Streams
+Automatic Learning
+User Memories
+Trajectories
+Standalone collector
+Product Analytics
+Channels
+Hosting
+
+Backend
+
+Runtime
+Deployment
+Debugging
+
+Learn
+
+Concepts
+
+Other
+
+Troubleshooting
+Community frameworks
+Reference docs
+Interactivity
+WebMCP
+
+Expose browser-side actions as structured tools that compatible agents can discover and call.
+
+Overview
+#
+
+WebMCP lets your website tell compatible browser agents what they can do. Instead of guessing which buttons to click, an agent discovers a named tool with a description, a typed input schema, and a JavaScript handler.
+
+CopilotKit can publish an existing frontend tool to document.modelContext. The same handler then works for your CopilotKit agent and for WebMCP-aware browser agents.
+
+WebMCP is experimental
+
+WebMCP is a draft Community Group report, not a W3C Standard. Chrome offers it through an origin trial beginning in Chrome 149, or through the chrome://flags/#enable-webmcp-testing flag for local development. CopilotKit safely does nothing when document.modelContext is unavailable. Check the current Chrome setup instructions before testing.
+
+Start with your coding agent
+#
+
+Use this pre-built prompt to add WebMCP to your project. Your coding agent will adapt the implementation to your app and verify that a compatible browser can discover and call the tool.
+
+Copy Prompt
+
+Open your coding agent in your project's folder, or in an empty folder for a new app.
+
+Do I need an agent?
+#
+
+You do not need a CopilotKit backend agent to handle a WebMCP call. A compatible browser agent calls the frontend tool handler directly on the page; in that path, the handler context has no agent.
+
+Choose the smallest path that fits your app:
+
+What your app has today	What to do
+A CopilotKit frontend tool for the action	Add webmcp: true, or add annotations with webmcp: { annotations: ... }.
+CopilotKit, but no frontend tool for the action	Wrap the smallest suitable browser-side action in a frontend tool, then opt it into WebMCP.
+A backend agent	Keep it. The tool can remain available to that agent, but WebMCP calls do not pass through it.
+No backend agent	Use CopilotKitCore directly in browser code, or add the appropriate frontend integration. Do not create an agent only for WebMCP.
+
+React Native does not expose document.modelContext, so WebMCP registration is a no-op there. CopilotKit currently supports this WebMCP option in its browser integrations for React, Vue, Angular, and direct core usage.
+
+How CopilotKit connects WebMCP
+#
+Your app registers a CopilotKit frontend tool with webmcp enabled.
+CopilotKit mirrors the tool's name, description, JSON Schema, annotations, and handler onto document.modelContext.
+A compatible browser agent discovers the tool and calls the same JavaScript handler while the page is open.
+CopilotKit unregisters the WebMCP tool when the frontend tool is removed or becomes unavailable.
+
+The WebMCP call stays in the browser unless your handler deliberately calls an API. CopilotKit does not route that call through a Runtime or backend agent.
+
+Add WebMCP manually
+#
+Vue frontend tool
+#
+
+Add webmcp to the tool you already register. This code must run inside your existing CopilotKitProvider.
+
+OrderSearch.vue
+<script setup lang="ts">
+import { z } from "zod";
+import { useFrontendTool } from "@copilotkit/vue/v2";
+useFrontendTool({
+  name: "searchOrders",
+  description: "Search the signed-in user's orders by status",
+  parameters: z.object({
+    status: z.enum(["open", "shipped", "delivered"]),
+  }),
+  handler: async ({ status }) => {
+    const orders = await searchOrders(status);
+    return JSON.stringify(orders);
+  },
+  webmcp: {
+    annotations: {
+      readOnlyHint: true,
+    },
+  },
+});
+</script>
+
+See the Vue useFrontendTool reference for the complete API.
+
+WebMCP only, with no agent
+#
+
+For browser code that does not use a framework provider, register the frontend tool directly with the core. Keep the core instance alive for as long as the tool should remain available.
+
+webmcp.ts
+import { CopilotKitCore } from "@copilotkit/core";
+import { z } from "zod";
+export const copilotkit = new CopilotKitCore({
+  tools: [
+    {
+      name: "searchOrders",
+      description: "Search the signed-in user's orders by status",
+      parameters: z.object({
+        status: z.enum(["open", "shipped", "delivered"]),
+      }),
+      handler: async ({ status }) => {
+        const orders = await searchOrders(status);
+        return JSON.stringify(orders);
+      },
+      webmcp: {
+        annotations: {
+          readOnlyHint: true,
+        },
+      },
+    },
+  ],
+});
+
+This path does not configure a Runtime or an agent. It only registers browser-side tools through CopilotKit's core lifecycle.
+
+Design tools agents can use reliably
+#
+Give every WebMCP tool a non-empty, specific description. CopilotKit skips WebMCP registration when it is missing.
+Keep each tool focused on one action and give every parameter a useful description.
+Use readOnlyHint: true only when the handler cannot change state.
+Use untrustedContentHint: true when results may contain user-generated or external content.
+Return concise, structured results that tell the caller what happened.
+Set the frontend tool to unavailable when the action cannot currently run; CopilotKit removes it from WebMCP until it is available again.
+
+Annotations are hints for browser agents, not security controls. Enforce authentication, authorization, validation, rate limits, and required user confirmation inside the handler or the API it calls. See Chrome's WebMCP tool security guidance.
+
+Agent scope does not scope WebMCP
+
+agentId limits which CopilotKit agent receives a frontend tool. WebMCP tools are page-level, so agentId does not restrict browser-agent access. If multiple opted-in tools share a name across agent IDs, CopilotKit exposes the first one and logs a warning.
+
+Test the complete path
+#
+Open Chrome 149 or newer and enable the WebMCP origin trial or local testing flag.
+Load the app in an origin-isolated document. The tools permissions policy defaults to self; cross-origin iframes also need allow="tools".
+Confirm that document.modelContext exists.
+Use Chrome's Model Context Tool Inspector to confirm the tool name and schema, call it with representative inputs, and inspect its result.
+Ask the inspector's agent to complete the user task in natural language. Verify that it chooses the right tool and that authentication and confirmation boundaries still hold.
+
+If the tool does not appear, check the browser setup first, then verify that the tool has a description, webmcp is enabled, and the frontend tool is currently available.
+
+Related
+#
+Frontend tools
+Vue useFrontendTool reference
+WebMCP specification
+Chrome WebMCP best practices
+On this page
+Overview
+Start with your coding agent
+Do I need an agent?
+How CopilotKit connects WebMCP
+Add WebMCP manually
+Vue frontend tool
+WebMCP only, with no agent
+Design tools agents can use reliably
+Test the complete path
+Related

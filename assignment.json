@@ -1,0 +1,135 @@
+{
+ "framework": "LangGraph JS",
+ "ui": "vue",
+ "repo": "LangGraph-vue",
+ "docBase": "https://docs.copilotkit.ai/vue/langgraph-typescript/",
+ "versions": {
+  "@copilotkit/vue": "1.85.0",
+  "@copilotkit/runtime": "1.85.0",
+  "@copilotkit/core": "1.85.0",
+  "zod": "3.25.76",
+  "vue": "3.5.44",
+  "vite": "8.3.5",
+  "tsx": "4.23.15",
+  "@langchain/langgraph": "1.7.0",
+  "@copilotkit/sdk-js": "1.85.0"
+ },
+ "testedContext": {
+  "os": "Microsoft Windows 11 Pro",
+  "packageManager": "npm 11 (Node 26.7.0)"
+ },
+ "report": {
+  "style": "team",
+  "h1": "LangGraph",
+  "title": "LangGraph JS testing",
+  "quickstartHeading": "Quickstarts",
+  "quickstartHeader": null,
+  "clipsToUpload": true,
+  "guidesHeading": "Vue Guides",
+  "columns": [
+   "Page/Section",
+   "LangGraph.js"
+  ],
+  "resultColumn": 1
+ },
+ "sections": [],
+ "pages": [
+  {
+   "id": "quickstart",
+   "label": "JS (Vue)",
+   "kind": "quickstart",
+   "group": null,
+   "child": false,
+   "docPath": "quickstart",
+   "reachable": "sidebar",
+   "status": "❌",
+   "findings": [
+    2
+   ],
+   "notes": [
+    "Issue: the Vue quickstart link lands on the LangGraph landing page, which only has Next.js code (React frontend). There are no Vue steps on the rendered page."
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": "Quickstart - Vue",
+     "clip": "LANGGRAPH-vue-01-Quickstart",
+     "loom": "https://www.loom.com/share/ec99c60926f94cf68b07ad155b21d03f"
+    }
+   ]
+  },
+  {
+   "id": "frontend-tools",
+   "label": "Frontend Tools",
+   "kind": "guide",
+   "group": null,
+   "child": false,
+   "docPath": "frontend-tools",
+   "reachable": "sidebar",
+   "status": "✅",
+   "findings": [
+    3,
+    4
+   ],
+   "notes": [
+    "Note: runtime-url=\"/api/copilotkit\" 404s on Vite, it needs the runtime's full URL (http://localhost:8200/api/copilotkit). With a LangGraph agent the graph also has to bind the CopilotKit actions, which the page doesn't show."
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": "Frontend Tools - Vue",
+     "clip": "LANGGRAPH-vue-02-FrontendTools",
+     "loom": "https://www.loom.com/share/5e1e32c43949433a8b0b030dbcc30c65"
+    }
+   ]
+  },
+  {
+   "id": "multi-agent-subagents",
+   "label": "Sub Agents",
+   "kind": "guide",
+   "group": null,
+   "child": false,
+   "docPath": "multi-agent/subagents",
+   "reachable": "sidebar",
+   "status": "❌",
+   "findings": [
+    7
+   ],
+   "notes": [
+    "Issue: no Vue frontend code. The Code tab only has React files (page.tsx, delegation-log.tsx), so the delegation log can't be built in Vue."
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": "Issue",
+     "clip": "LANGGRAPH-vue-04-SubAgents",
+     "loom": "https://www.loom.com/share/a585858e22a0437bbd67af6ba39bbdb3"
+    }
+   ]
+  },
+  {
+   "id": "webmcp",
+   "label": "Web MCP",
+   "kind": "guide",
+   "group": null,
+   "child": false,
+   "docPath": "webmcp",
+   "reachable": "sidebar",
+   "status": "❌",
+   "findings": [
+    6
+   ],
+   "notes": [
+    "Issue: the tool handler calls searchOrders(), which the page never defines, so the agent never replies (no reply, no error)."
+   ],
+   "block": null,
+   "links": [
+    {
+     "text": "Issue",
+     "clip": "LANGGRAPH-vue-05-WebMCP",
+     "loom": "https://www.loom.com/share/3db07dea93e744a4a4ed50cdc1ff75a2"
+    }
+   ]
+  }
+ ]
+}

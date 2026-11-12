@@ -1,0 +1,13 @@
+{
+  "node_version": "20",
+  "dependencies": [
+    "."
+  ],
+  "graphs": {
+    "sample_agent": "./src/agent.ts:graph",
+    "frontend_tools": "./src/frontend-tools.ts:graph",
+    "frontend_tools_harness": "./src/frontend-tools.harness.ts:graph",
+    "subagents": "./src/subagents.codetab.ts:graph"
+  },
+  "env": ".env"
+}

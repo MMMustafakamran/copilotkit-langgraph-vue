@@ -1,0 +1,172 @@
+URL https://docs.copilotkit.ai/vue/langgraph-typescript/quickstart
+FINAL https://docs.copilotkit.ai/vue/langgraph-typescript
+STATUS 200
+TITLE Vue quickstart
+IFRAMES https://showcase-langgraph-typescript-production.up.railway.app/vue/agentic-chat
+LINKS
+https://docs.copilotkit.ai/
+https://docs.copilotkit.ai/reference
+https://docs.copilotkit.ai/cookbook
+https://copilotkit.ai/talk-to-an-engineer
+https://dashboard.operations.copilotkit.ai/sign-in?post_auth_redirect=ready&utm_source=docs&utm_medium=cta&utm_campaign=intelligence&utm_content=navbar
+https://docs.copilotkit.ai/vue/langgraph-typescript
+https://docs.copilotkit.ai/vue/langgraph-typescript/using-these-docs
+https://docs.copilotkit.ai/vue/langgraph-typescript/build-with-agents
+https://docs.copilotkit.ai/vue/langgraph-typescript/intelligence/overview
+https://docs.copilotkit.ai/vue/langgraph-typescript/frontend-tools
+https://docs.copilotkit.ai/vue/langgraph-typescript/webmcp
+https://docs.copilotkit.ai/vue/langgraph-typescript/multi-agent/subagents
+https://docs.copilotkit.ai/vue/langgraph-typescript/learning
+https://docs.copilotkit.ai/vue/langgraph-typescript/intelligence/memories
+https://docs.copilotkit.ai/vue/langgraph-typescript/intelligence/trajectories
+https://docs.copilotkit.ai/vue/langgraph-typescript/intelligence/standalone-collector
+https://docs.copilotkit.ai/vue/langgraph-typescript/intelligence/analytics
+https://docs.copilotkit.ai/vue/langgraph-typescript/intelligence/channels
+https://docs.copilotkit.ai/vue/langgraph-typescript/community-frameworks
+https://docs.copilotkit.ai/reference/vue
+https://github.com/copilotkit/copilotkit
+https://discord.gg/6dffbvGU3D
+https://docs.copilotkit.ai/vue/langgraph-typescript/quickstart
+https://docs.copilotkit.ai/vue/langgraph-typescript/agentic-chat-ui
+https://showcase-langgraph-typescript-production.up.railway.app/vue/agentic-chat
+https://docs.copilotkit.ai/langgraph/build-with-agents
+https://docs.copilotkit.ai/langgraph/quickstart
+https://ssr-placeholder.invalid/sign-in?post_auth_redirect=ready&utm_source=docs&utm_medium=cta&utm_campaign=intelligence&utm_content=docs_langgraph_overview&utm_frontend=vue&utm_backend=langgraph-typescript
+https://github.com/CopilotKit/CopilotKit
+https://docs.copilotkit.ai/vue/langgraph-typescript#setup
+---
+CopilotKitDocs
+DocsReferenceCookbook
+FrontendVueAgent backendLangGraph (TypeScript)
+DocsReferenceCookbook
+QuickstartUsing these docsBuild with agentsIntelligence
+
+Basics
+
+Chat
+Threads
+Frontend-tools
+
+Generative UI
+
+Controlled
+Open-ended
+
+Interactivity
+
+Shared state
+Human-in-the-loop
+WebMCP
+
+Agent capabilities
+
+Sub-agents
+
+Intelligence
+
+Overview
+Get started
+Features
+AG-UI Streams
+Automatic Learning
+User Memories
+Trajectories
+Standalone collectorProduct AnalyticsChannels
+Hosting
+
+Backend
+
+Runtime
+Deployment
+Debugging
+
+Learn
+
+Concepts
+
+Other
+
+Troubleshooting
+Community frameworksReference docs
+Talk to an engineer
+CopilotKit + LangGraph
+Bring your LangGraph agents
+into any app
+
+CopilotKit is an open-source framework that connects your app to LangGraph agents. Give your agents chat, generative UI, human-in-the-loop, AG-UI Streams, Automatic Learning and more.
+
+Copy Prompt
+Quickstart
+
+Open your coding agent in your project's folder, or in an empty folder for a new app.
+
+Loading Chat…
+Previous slide
+Chat
+AG-UI Streams
+Automatic Learning
+Next slide
+
+LangGraph and CopilotKit running together, in the React frontend. Every demo below is the same integration with one capability turned on.
+
+Build with LangGraph
+
+LangGraph gives you the graph: nodes, edges, one state object, and interrupts that stop a run mid-node. What it does not give you is the surface. Somewhere for the conversation to happen, a way to show the run while it is running, and a moment for a person to step in. Each capability below builds on something your graph already does.
+
+Pre-Built: CopilotChat
+
+Pre-built <CopilotChat /> component for full-screen/embedded chat
+
+Read the docs Live demo 
+
+Chat surfaces, headless UI, frontend tools and subagent flows work with LangGraph too. And more
+
+Start building
+
+Connect an existing agent or build a new one. Get a tailored setup prompt.
+
+Your setup
+1Setup
+2Frontend
+3Features
+4Prompt
+Step 1 of 4
+Step 1 of 4Setup
+What are you building?
+
+Tell us what you already have. We’ll tailor your setup.
+
+Existing projectAdd a LangGraph (TypeScript) agent to your appExisting agentConnect your LangGraph (TypeScript) agent to your appNew projectBuild an app and agent from scratch
+Step 1 of 4Setup
+Connect your agent
+
+Your graph stays where it runs today: LangGraph Platform, LangSmith, or your own FastAPI service. CopilotKit reaches it over AG-UI, so nothing inside the graph changes.
+
+import { CopilotRuntime, createCopilotRuntimeHandler } from "@copilotkit/runtime/v2";
+import { LangGraphAgent } from "@copilotkit/runtime/langgraph";
+
+const runtime = new CopilotRuntime({
+  agents: {
+    sample_agent: new LangGraphAgent({
+      deploymentUrl: process.env.LANGGRAPH_DEPLOYMENT_URL!,
+      graphId: "sample_agent",
+      langsmithApiKey: process.env.LANGSMITH_API_KEY!,
+    }),
+  },
+});
+
+const handler = createCopilotRuntimeHandler({
+  runtime,
+  basePath: "/api/copilotkit",
+});
+
+export const GET = handler;
+export const POST = handler;
+export const PATCH = handler;
+export const DELETE = handler;
+
+Read the setup guide 
+Bring your LangGraph agents to production
+Add persistent threads, observability, and the inspector with CopilotKit Intelligence.
+Create a free account
+View on GitHubStart building 

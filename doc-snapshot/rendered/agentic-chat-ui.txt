@@ -1,0 +1,135 @@
+URL https://docs.copilotkit.ai/vue/langgraph-typescript/agentic-chat-ui
+FINAL https://docs.copilotkit.ai/vue/langgraph-typescript/agentic-chat-ui
+STATUS 200
+TITLE Chat Components
+IFRAMES https://showcase-langgraph-typescript-production.up.railway.app/vue/agentic-chat 
+LINKS
+https://docs.copilotkit.ai/
+https://docs.copilotkit.ai/reference
+https://docs.copilotkit.ai/cookbook
+https://copilotkit.ai/talk-to-an-engineer
+https://dashboard.operations.copilotkit.ai/sign-in?post_auth_redirect=ready&utm_source=docs&utm_medium=cta&utm_campaign=intelligence&utm_content=navbar
+https://docs.copilotkit.ai/vue/langgraph-typescript
+https://docs.copilotkit.ai/vue/langgraph-typescript/using-these-docs
+https://docs.copilotkit.ai/vue/langgraph-typescript/build-with-agents
+https://docs.copilotkit.ai/vue/langgraph-typescript/intelligence/overview
+https://docs.copilotkit.ai/vue/langgraph-typescript/frontend-tools
+https://docs.copilotkit.ai/vue/langgraph-typescript/webmcp
+https://docs.copilotkit.ai/vue/langgraph-typescript/multi-agent/subagents
+https://docs.copilotkit.ai/vue/langgraph-typescript/learning
+https://docs.copilotkit.ai/vue/langgraph-typescript/intelligence/memories
+https://docs.copilotkit.ai/vue/langgraph-typescript/intelligence/trajectories
+https://docs.copilotkit.ai/vue/langgraph-typescript/intelligence/standalone-collector
+https://docs.copilotkit.ai/vue/langgraph-typescript/intelligence/analytics
+https://docs.copilotkit.ai/vue/langgraph-typescript/intelligence/channels
+https://docs.copilotkit.ai/vue/langgraph-typescript/community-frameworks
+https://docs.copilotkit.ai/reference/vue
+https://github.com/copilotkit/copilotkit
+https://discord.gg/6dffbvGU3D
+https://docs.copilotkit.ai/vue/langgraph-typescript/agentic-chat-ui#pre-built-components-for-agentic-chat
+https://docs.copilotkit.ai/vue/langgraph-typescript/agentic-chat-ui#what-it-looks-like-in-code
+---
+Frontend
+Vue
+Agent backend
+LangGraph (TypeScript)
+Quickstart
+Using these docs
+Build with agents
+Intelligence
+
+Basics
+
+Chat
+Threads
+Frontend-tools
+
+Generative UI
+
+Controlled
+Open-ended
+
+Interactivity
+
+Shared state
+Human-in-the-loop
+WebMCP
+
+Agent capabilities
+
+Sub-agents
+
+Intelligence
+
+Overview
+Get started
+Features
+AG-UI Streams
+Automatic Learning
+User Memories
+Trajectories
+Standalone collector
+Product Analytics
+Channels
+Hosting
+
+Backend
+
+Runtime
+Deployment
+Debugging
+
+Learn
+
+Concepts
+
+Other
+
+Troubleshooting
+Community frameworks
+Reference docs
+LangGraph (TypeScript)
+Chat Components
+
+Customizable, drop-in components for building AI-powered chat interfaces
+
+Copy Prompt
+
+Open your coding agent in your project's folder, or in an empty folder for a new app.
+
+Demo
+Code
+Pre-built components for agentic chat
+#
+
+CopilotKit's chat components give you a fully functional, customizable AI chat interface out of the box. They handle streaming, generative UI, and deep customization so you can focus on your agent's behavior, not UI plumbing.
+
+What it looks like in code
+#
+
+The live agentic-chat cell above is built from a single, small page. Wrap your UI in <CopilotKit> once (it wires the runtime, session, and agent registry) and drop <CopilotChat> wherever the chat should go:
+
+page.tsx
+    <CopilotKit runtimeUrl="/api/copilotkit" agent="agentic_chat">
+      <Chat />
+    </CopilotKit>
+
+Inside the chat, the useConfigureSuggestions hook lets you show contextual starter prompts. The example below uses it to seed a simple "Write a sonnet" suggestion:
+
+suggestions.ts
+export function useAgenticChatSuggestions() {
+  useConfigureSuggestions({
+    suggestions: [
+      { title: "Write a sonnet", message: "Write a short sonnet about AI." },
+      {
+        title: "Tell me a joke",
+        message: "Tell me a one-line joke.",
+      },
+      {
+        title: "Is 17 prime?",
+        message: "Walk me through whether 17 is prime.",
+      },
+    ],
+    available: "always",
+  });
+}
