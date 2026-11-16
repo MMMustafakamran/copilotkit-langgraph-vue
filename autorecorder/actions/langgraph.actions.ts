@@ -6,6 +6,7 @@ import { closeNotepad, openNotepad, typeInNotepad } from '../core/overlays/notep
 import { clickTaskbarApp, ensureOverlays, waitForHydration } from '../core/overlays/taskbar';
 import { glideTo } from './glide-click';
 import { checkpoint, mark, probeText } from '../core/timeline';
+import { registerDocEvidence } from '../core/doc-evidence';
 
 import { humanizeNote } from '../core/overlays/note-style';
 /** Notepad typing speed, same as LangGraph-react (fast, like a quick jotted note). */
@@ -292,8 +293,10 @@ async function dragSelect(page: Page, target: Locator, text: string): Promise<vo
   await page.mouse.up();
 }
 
+/** Doc step: highlight each page's faulty doc text before the IDE (AUTORECORDER §2, core/doc-evidence). */
+registerDocEvidence(FINDING_EVIDENCE);
+
 export async function writeFinding(page: Page, config: PageRecordConfig): Promise<void> {
-  await showDocEvidence(page, config).catch((e) => console.warn(`   ⚠️ Doc evidence step failed: ${String(e).slice(0, 120)}`));
   const body = FINDING_NOTES[config.id];
   if (!body) return;
   mark('notepad');

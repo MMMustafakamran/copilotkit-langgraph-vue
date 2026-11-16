@@ -1,6 +1,6 @@
 # Findings — LangGraph-vue (LangGraph JS / TypeScript + Vue)
 Open doc defects only. Written from probe evidence (`.qa/instructions/QA-RULES.md` section 6). Numbers are stable IDs (code cites `FINDINGS.md #N`), so gaps are removed findings. React-side findings are in `LangGraph-react/FINDINGS.md` (cited as React #N).
-Stack: `@copilotkit/vue`/`runtime` 1.85.0 (declared ^1.85.0), `@copilotkit/core` 1.85.0 (transitive), `zod` 3.25.76 (transitive), `vue` 3.5.44 (declared ^3.5.42), `vite` 8.3.5 (declared ^8.2.2), `tsx` 4.23.15, agent: LangGraph JS server from `LangGraph-react/agent` (`@langchain/langgraph` 1.7.0, `@copilotkit/sdk-js` 1.85.0), Node 26.7.0, Windows 11. Docs: https://docs.copilotkit.ai/vue/langgraph-typescript (snapshot 2026-11-05)
+Stack: `@copilotkit/vue`/`runtime` 1.88.0 (npm latest, CI 2026-11-16) (declared ^1.85.0), `@copilotkit/core` 1.85.0 (transitive), `zod` 3.25.76 (transitive), `vue` 3.5.44 (declared ^3.5.42), `vite` 8.3.5 (declared ^8.2.2), `tsx` 4.23.15, agent: LangGraph JS server from `LangGraph-react/agent` (`@langchain/langgraph` 1.7.0, `@copilotkit/sdk-js` 1.85.0), Node 26.7.0, Windows 11. Docs: https://docs.copilotkit.ai/vue/langgraph-typescript (snapshot 2026-11-05)
 
 ## Dev blockers (seen with `npm run dev` and normal use of the page)
 

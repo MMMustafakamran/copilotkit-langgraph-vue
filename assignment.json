@@ -4,8 +4,8 @@
  "repo": "LangGraph-vue",
  "docBase": "https://docs.copilotkit.ai/vue/langgraph-typescript/",
  "versions": {
-  "@copilotkit/vue": "1.85.0",
-  "@copilotkit/runtime": "1.85.0",
+  "@copilotkit/vue": "1.88.0",
+  "@copilotkit/runtime": "1.88.0",
   "@copilotkit/core": "1.85.0",
   "zod": "3.25.76",
   "vue": "3.5.44",
@@ -54,7 +54,8 @@
     {
      "text": "Quickstart - Vue",
      "clip": "LANGGRAPH-vue-01-Quickstart",
-     "loom": "https://www.loom.com/share/ec99c60926f94cf68b07ad155b21d03f"
+     "loom": "https://www.loom.com/share/fc3ca379d16c42d1ba565e8d7a37e81f",
+     "filmed": "2026-11-16"
     }
    ]
   },
@@ -131,5 +132,6 @@
     }
    ]
   }
- ]
+ ],
+ "quickstartBlocked": "the Vue quickstart is the LangGraph landing page with only Next.js code; there are no Vue steps, so a reader has no working Vue app to build on"
 }

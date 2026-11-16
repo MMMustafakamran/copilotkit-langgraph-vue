@@ -68,6 +68,8 @@ export interface PageDefinition {
 
   /** Repo-relative source file the simulated IDE shows. */
   ideFile: string;
+  /** Error clips: exact text of a line in `ideFile` the tester added because the doc page did not give it (see IdeTabConfig.addedText). */
+  ideAddedText?: string;
 
   /** Inclusive highlight range in `ideFile`. Guarded by `npm run doctor`. */
   startLine: number;
@@ -110,6 +112,13 @@ export interface PageDefinition {
    */
   docOnly?: boolean;
 
+  /**
+   * Error clips: faulty doc text to drag-select and hold in the doc step, before the IDE (one
+   * `evidence` mark each). Overrides what the repo registered with `registerDocEvidence`. Leave
+   * unset on ✅ pages.
+   */
+  findingEvidence?: { text: string; caption?: string; clickTab?: string }[];
+
   /** How long to hold on the doc page when `docOnly` (defaults to 6000ms). */
   docViewDurationMs?: number;
 
@@ -119,6 +128,14 @@ export interface PageDefinition {
    * doc page as it was left; a `ctx.fail` from it fails the take like a demo failure would.
    */
   docOnlyAction?: boolean;
+
+  /**
+   * The demo route is expected to error as published (it doesn't compile, or Next shows a full-page
+   * error such as "Blocking Route"). The take does not stop on an HTTP 4xx/5xx and does not wait for
+   * the chat to render: it settles on whatever the route shows (the Next error overlay), then runs the
+   * page's action, which films the error and goes on to the doc evidence and Notepad note.
+   */
+  demoMayError?: boolean;
 
   /**
    * localStorage entries set on every page of the take before the doc loads, e.g. the docs site's

@@ -23,7 +23,7 @@ export const PAGES = definePages([
       { filePath: 'my-copilot-app/server.ts', startLine: 1, endLine: 26 },
       { filePath: 'my-copilot-app/src/main.ts', startLine: 1, endLine: 5 },
       { filePath: 'my-copilot-app/src/pages/QuickstartApp.vue', startLine: 1, endLine: 15 },
-      { filePath: 'my-copilot-app/server.langgraph.ts', startLine: 1, endLine: 22 },
+      { filePath: 'my-copilot-app/server.langgraph.ts', startLine: 1, endLine: 22, addedText: "// HARNESS: no Vue page shows how to register a LangGraph agent (was FINDINGS.md #1, removed 2026-11-11: the Vue steps are only in the .md export). This is the quickstart" },
     ],
     prompt: 'Which model and agent framework are you running on? One sentence.',
     waitAfterPromptMs: 3000,
